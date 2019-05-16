@@ -26,6 +26,9 @@
 		514275E7228B279B00D1D057 /* Results.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514275E6228B279B00D1D057 /* Results.swift */; };
 		514275E9228B28E700D1D057 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514275E8228B28E700D1D057 /* ApiError.swift */; };
 		514275EB228B2CF200D1D057 /* TmdbApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514275EA228B2CF200D1D057 /* TmdbApiClient.swift */; };
+		514275EF228B854D00D1D057 /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514275EE228B854D00D1D057 /* MovieCell.swift */; };
+		51B39026228C170B00A1393B /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B39025228C170B00A1393B /* ImageDownloader.swift */; };
+		51B39028228C1A5600A1393B /* PendingOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B39027228C1A5600A1393B /* PendingOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +53,9 @@
 		514275E6228B279B00D1D057 /* Results.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Results.swift; sourceTree = "<group>"; };
 		514275E8228B28E700D1D057 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		514275EA228B2CF200D1D057 /* TmdbApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TmdbApiClient.swift; sourceTree = "<group>"; };
+		514275EE228B854D00D1D057 /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		51B39025228C170B00A1393B /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		51B39027228C1A5600A1393B /* PendingOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 		511FD533228971A5005F1235 /* MovieNight */ = {
 			isa = PBXGroup;
 			children = (
+				514275ED228B853200D1D057 /* Views */,
 				514275EC228B3B2C00D1D057 /* DataSource */,
 				514275DD228AE73300D1D057 /* Networking */,
 				514275D2228AE56000D1D057 /* ViewControllers */,
@@ -127,6 +134,8 @@
 				514275E6228B279B00D1D057 /* Results.swift */,
 				514275E8228B28E700D1D057 /* ApiError.swift */,
 				514275EA228B2CF200D1D057 /* TmdbApiClient.swift */,
+				51B39025228C170B00A1393B /* ImageDownloader.swift */,
+				51B39027228C1A5600A1393B /* PendingOperation.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -136,6 +145,14 @@
 			children = (
 			);
 			path = DataSource;
+			sourceTree = "<group>";
+		};
+		514275ED228B853200D1D057 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				514275EE228B854D00D1D057 /* MovieCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				514275DC228AE5D900D1D057 /* MovieController.swift in Sources */,
+				514275EF228B854D00D1D057 /* MovieCell.swift in Sources */,
 				514275C9228AD92C00D1D057 /* Certificate.swift in Sources */,
 				511FD537228971A5005F1235 /* ViewController.swift in Sources */,
 				514275E3228AEA0000D1D057 /* Endpoint.swift in Sources */,
@@ -220,10 +238,12 @@
 				514275E9228B28E700D1D057 /* ApiError.swift in Sources */,
 				514275CB228AD93600D1D057 /* Genre.swift in Sources */,
 				514275DF228AE8A800D1D057 /* Movie.swift in Sources */,
+				51B39028228C1A5600A1393B /* PendingOperation.swift in Sources */,
 				514275E7228B279B00D1D057 /* Results.swift in Sources */,
 				514275D8228AE5BA00D1D057 /* PeopleController.swift in Sources */,
 				514275D4228AE59000D1D057 /* CertificateController.swift in Sources */,
 				514275EB228B2CF200D1D057 /* TmdbApiClient.swift in Sources */,
+				51B39026228C170B00A1393B /* ImageDownloader.swift in Sources */,
 				514275CD228AD94500D1D057 /* People.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

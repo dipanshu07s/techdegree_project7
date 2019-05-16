@@ -57,15 +57,18 @@ class GenreController: UITableViewController {
             
             let destionation = segue.destination as! PeopleController
             destionation.delegate = self
-            client.getPeople { (result) in
-                switch result {
-                case .success(let people):
-                    destionation.people = people.results
-                    destionation.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
+            for i in 1...5 {
+                client.getPeople(page: "\(i)") { (result) in
+                    switch result {
+                    case .success(let people):
+                        destionation.people += people.results
+                        destionation.tableView.reloadData()
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
             }
+            
         }
     }
 }

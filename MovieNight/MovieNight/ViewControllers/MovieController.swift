@@ -9,11 +9,21 @@
 import UIKit
 
 class MovieController: UIViewController {
-
+    
+    @IBOutlet weak var artwork: UIImageView!
+    @IBOutlet weak var overview: UITextView!
+    
+    var artworkImage: UIImage?
+    var movieOverview: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let artworkImage = artworkImage, let movieOverview = movieOverview {
+            artwork.image = artworkImage
+            overview.text = movieOverview
+        }
+        
     }
     
 

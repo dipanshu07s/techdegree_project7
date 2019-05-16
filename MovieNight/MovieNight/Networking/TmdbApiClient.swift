@@ -34,8 +34,8 @@ class TmdbApiClient: ApiClient {
         getData(with: request, completion: completion)
     }
     
-    func getPeople(completion: @escaping (Result<PopularPeople, ApiError>) -> Void) {
-        let people = Tmdb.people
+    func getPeople(page: String, completion: @escaping (Result<PopularPeople, ApiError>) -> Void) {
+        let people = Tmdb.people(page: page)
         let request = people.request
         
         getData(with: request, completion: completion)
@@ -44,7 +44,7 @@ class TmdbApiClient: ApiClient {
     func getMovies(certificateCountry: String, certificate: String, page: String, genres: String, people: String, completion: @escaping (Result<Movies, ApiError>) -> Void) {
         let movies = Tmdb.movies(certificateCountry: certificateCountry, certificate: certificate, page: page, genres: genres, people: people)
         let request = movies.request
-        
+        print(request)
         getData(with: request, completion: completion)
     }
 }

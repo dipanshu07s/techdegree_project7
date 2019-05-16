@@ -32,7 +32,7 @@ extension Endpoint {
 enum Tmdb {
     case certificate
     case genre
-    case people
+    case people(page: String)
     case movies(certificateCountry: String, certificate: String, page: String, genres: String, people: String)
 }
 
@@ -56,8 +56,13 @@ extension Tmdb: Endpoint {
     
     var queryItems: [URLQueryItem] {
         switch self {
-        case .certificate, .genre, .people:
+        case .certificate, .genre:
             return [URLQueryItem(name: "api_key", value: apiKey)]
+        case .people(let page):
+            return [
+                URLQueryItem(name: "api_key", value: apiKey),
+                URLQueryItem(name: "page", value: page)
+            ]
         case let .movies(certificateCountry, certificate, page, genres, people):
             return [
                 URLQueryItem(name: "api_key", value: apiKey),

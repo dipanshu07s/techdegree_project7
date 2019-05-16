@@ -45,15 +45,21 @@ class ViewController: UIViewController {
             }
         } else if segue.identifier == "resultSegue" {
             let destination = segue.destination as! ResultController
-            client.getMovies(certificateCountry: "US", certificate: rating!.certification, page: "1", genres: getGenres(), people: getPeople()) { (result) in
-                switch result {
-                case .success(let movies):
-                    destination.movies = movies.results
-                    destination.tableView.reloadData()
-                case .failure(let error):
-                    print(error)
+            var totalPages = 0
+            var currentPage = 0
+            repeat {
+                currentPage += 1
+                client.getMovies(certificateCountry: "US", certificate: rating!.certification, page: "\(currentPage)", genres: getGenres(), people: getPeople()) { (result) in
+                    switch result {
+                    case .success(let movies):
+                        destination.movies += movies.results
+                        destination.tableView.reloadData()
+                        totalPages = movies.totalPages
+                    case .failure(let error):
+                        print(error)
+                    }
                 }
-            }
+            } while currentPage < totalPages
             
         }
     }
