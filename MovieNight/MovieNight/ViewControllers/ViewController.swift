@@ -18,6 +18,17 @@ class ViewController: UIViewController {
     var rating: Certificate?
     var genresId = [Int]()
     var peopleId = [Int]()
+    var currentPage = 1
+    var destination: ResultController?
+    var totalPages: Int? {
+        didSet {
+            if currentPage < totalPages! {
+                currentPage += 1
+                print(currentPage)
+                movies(page: currentPage, destination: destination)
+            }
+        }
+    }
     
 
     override func viewDidLoad() {
@@ -44,27 +55,26 @@ class ViewController: UIViewController {
                 }
             }
         } else if segue.identifier == "resultSegue" {
-            let destination = segue.destination as! ResultController
-            var totalPages = 0
-            var currentPage = 0
-            repeat {
-                currentPage += 1
-                client.getMovies(certificateCountry: "US", certificate: rating!.certification, page: "\(currentPage)", genres: getGenres(), people: getPeople()) { (result) in
-                    switch result {
-                    case .success(let movies):
-                        destination.movies += movies.results
-                        destination.tableView.reloadData()
-                        totalPages = movies.totalPages
-                    case .failure(let error):
-                        print(error)
-                    }
-                }
-            } while currentPage < totalPages
-            
+            destination = segue.destination as? ResultController
+            movies(page: currentPage, destination: destination)
         }
     }
     
     // MARK: - Helper methods
+    
+    func movies(page: Int, destination: ResultController?) {
+        client.getMovies(certificateCountry: "US", certificate: rating!.certification, page: "\(page)", genres: getGenres(), people: getPeople()) { (result) in
+            switch result {
+            case .success(let movies):
+                destination?.movies += movies.results
+                destination?.tableView.reloadData()
+                self.totalPages = movies.totalPages
+            case .failure(let error):
+                print(error)
+                
+            }
+        }
+    }
     
     func getGenres() -> String {
         let strGenres = genresId.map({ String($0) })
